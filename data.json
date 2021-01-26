@@ -1,0 +1,46 @@
+[
+    {
+      "tags": [
+        "Dogs",
+        "Beautiful",
+        "Happiness"
+      ],
+      "imageUrl": "/images/Happiness.jpg",
+      "price": 2.99,
+      "name": "Beautiful Dogs",
+      "description": "You can't have my dogs, it is just a picture."
+    },
+    {
+      "tags": [
+        "Delicious",
+        "Fruit",
+        "Happiness"
+      ],
+      "imageUrl": "/images/best-fruit.jpg",
+      "price": 5.00,
+      "name": "The Best Fruit",
+      "description": "This is the best fruit of all time. It is so satisfying to open and they are wonderful."
+    },
+    {
+      "tags": [
+        "Blazer",
+        "Beautiful",
+        "Happiness"
+      ],
+      "imageUrl": "/images/Blazer.jpg",
+      "price": 25.00,
+      "name": "Christmas light Blazer",
+      "description": "This blazer is a thing of beauty. I love it."
+    },
+    {
+      "tags": [
+        "fluffy",
+        "bowtie",
+        "sheep"
+      ],
+      "imageUrl": "/images/bowtie-sheep.jpg",
+      "price": 17.99,
+      "name": "Stuffed Sheep with a Bowtie",
+      "description": "This sheep's name is Huey. He is very cute and squishable. I love him. He is very round."
+    }
+]
