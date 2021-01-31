@@ -9,8 +9,18 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> More <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li class="<%= path === '/store' ? 'active' : ''%>"><a href="/store">Products</a></li>
+            <li class="<%= path === '/admin' ? 'active' : ''%>"><a href="/admin">Admin</a></li>
           </ul>
       </li>
+      <% if(path == '/admin'){ %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Even More <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="<%= extended_path === '/addProduct' ? 'active' : ''%>"><a href="/admin/addProduct">Add Product</a></li>
+              <li class="<%= extended_path === '/products' ? 'active' : ''%>"><a href="/admin/products">Products</a></li>
+            </ul>
+        </li>
+        <% } %>
     </ul>
   </div>
 </nav>

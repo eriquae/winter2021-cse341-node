@@ -3,7 +3,7 @@ const router = express.Router();
 const Product = require('../models/products');
 
 router.get('/',(req, res, next) => {
-    return res.end();
+    res.redirect('/admin/products');
 });
 
 router.get('/products',(req, res, next) => {
@@ -12,6 +12,7 @@ router.get('/products',(req, res, next) => {
             res.render('pages/products', {
                 title: 'Products',
                 path: '/admin',
+                extended_path: '/products',
                 products: products
             });
         });
@@ -57,7 +58,8 @@ router.post('/product/:id/update',(req, res, next) => {
 router.get('/addProduct',(req, res, next) => {
     res.render('pages/addProduct', {
         title: 'Add Product', 
-        path: '/admin'
+        path: '/admin',
+        extended_path: '/addProduct'
     })
 });
 
