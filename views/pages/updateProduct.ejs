@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../includes/header.ejs %>
+</head>
+
+<body>
+  <% include ../includes/nav.ejs %>
+<div class="jumbotron text-center">
+  <div class="container">
+    <h1><%= title %></h1>
+    <form action="/admin/product/<%= product._id %>/update" method="POST">
+        Name: <input type="text" name="name" class="form-control" value="<%= product.name %>"><br/>
+        Price: <input type="number" step=".01" name="price" class="form-control" value="<%= product.price %>"><br/>
+        Image URL: <input type="text" name="imageUrl" class="form-control" value="<%= product.imageUrl %>"><br/>
+        Description: <textarea name="description" cols="30" rows="10" class="form-control"><%= product.description %></textarea><br/>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+</div>
+<div class="container"> 
+</div>
+</body>
+</html>

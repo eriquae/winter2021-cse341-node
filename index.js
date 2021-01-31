@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const app = express();
 const storeRoutes = require('./routes/store');
+const adminRoutes = require('./routes/admin');
 
 const corsOptions = {
     origin: "https://happiness-store.herokuapp.com/",
@@ -23,7 +24,7 @@ const options = {
     family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://eriquaelvira:kyCuOJUdw9konWwJ@cluster0.k7sou.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://eriquaelvira:kyCuOJUdw9konWwJ@cluster0.k7sou.mongodb.net/axolotl?retryWrites=true&w=majority";
 
 
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')))
    .set('view engine', 'ejs')
    .use(bodyParser({extended: false})) // For parsing the body of a POST
    .use('/store', storeRoutes)
+   .use('/admin', adminRoutes)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my Store', path: '/'});
