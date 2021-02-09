@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Product = require('../models/products');
 
+router.use((req, res, next) => {
+    if(typeof req.session.isLoggedIn === 'undefined' || req.session.isLoggedIn !== true) {
+        res.redirect('/')
+    }
+    else {
+        next()
+    }
+})
+
 router.get('/',(req, res, next) => {
     res.redirect('/admin/products');
 });
@@ -13,7 +22,7 @@ router.get('/products',(req, res, next) => {
                 title: 'Products',
                 path: '/admin',
                 extended_path: '/products',
-                products: products
+                products: products,
             });
         });
 });
@@ -31,7 +40,7 @@ router.get('/product/:id/update',(req, res, next) => {
             res.render('pages/updateProduct', {
                 title: 'Update Product',
                 path: '/admin',
-                product: product
+                product: product,
             })
         })  
 });
@@ -59,7 +68,7 @@ router.get('/addProduct',(req, res, next) => {
     res.render('pages/addProduct', {
         title: 'Add Product', 
         path: '/admin',
-        extended_path: '/addProduct'
+        extended_path: '/addProduct',
     })
 });
 

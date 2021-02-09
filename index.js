@@ -1,12 +1,14 @@
 
 // Our initial setup (package requires, port number setup)
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Place this with other requires (like 'path' and 'express')
 const path = require('path');
 const mongoose = require('mongoose');
 const PORT = process.env.PORT || 5000 // So we can run on heroku || (OR) localhost:5000
 const app = express();
+const auth = require('./controllers/auth.js');
 const storeRoutes = require('./routes/store');
 const adminRoutes = require('./routes/admin');
 
@@ -34,8 +36,17 @@ app.use(express.static(path.join(__dirname, 'public')))
    .set('views', path.join(__dirname, 'views'))
    .set('view engine', 'ejs')
    .use(bodyParser({extended: false})) // For parsing the body of a POST
+   .use(
+    session({ secret: 'secret', resave: false, saveUninitialized: false})
+    )
+   .use(auth.middleware)
    .use('/store', storeRoutes)
    .use('/admin', adminRoutes)
+   .get('/login', auth.getLogin)
+   .post('/login', auth.postLogin)
+   .get('/signup', auth.getSignup)
+   .post('/signup', auth.postSignup)
+   .get('/logout', auth.getLogout)
    .get('/', (req, res, next) => {
      // This is the primary index, always handled last. 
      res.render('pages/index', {title: 'Welcome to my Store', path: '/'});

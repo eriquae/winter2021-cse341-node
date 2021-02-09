@@ -28,7 +28,7 @@ router.get('/:id/details',(req, res, next) => {
             res.render('pages/details', {
                 title: 'Details', 
                 path: '/store',
-                product: product
+                product: product,
             })
         }) 
 });
